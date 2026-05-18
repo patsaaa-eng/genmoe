@@ -1,52 +1,73 @@
-/* style.css */
-
-/* 1. VARIABEL DAN DASAR */
+/* PENGATURAN WARNA (Ganti di sini agar berubah semua) */
 :root {
-    --warna-utama: #2c3e50;    /* Biru Gelap Profesional */
-    --warna-aksen: #27ae60;    /* Hijau Muhammadiyah/Islami */
-    --warna-bg: #f4f7f6;       /* Abu-abu Terang */
-    --warna-teks: #333;
-    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    --warna-utama: #2c3e50;       /* Biru Gelap Profesional */
+    --warna-sekunder: #ffffff;    /* Putih */
+    --warna-aksen: #27ae60;       /* Hijau untuk aksen */
+    --warna-bg-light: #f4f7f6;    /* Abu-abu sangat muda */
+    --warna-bg-card: #fef9e7;     /* Kuning sangat muda untuk kartu */
+    --warna-teks-utama: #ffffff;
+    --warna-teks-gelap: #333333;
+    --warna-teks-abu: #666666;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* DASAR */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--warna-teks);
-    background-color: var(--warna-bg);
+    color: var(--warna-teks-gelap);
+    scroll-behavior: smooth;
 }
 
-/* 2. NAVBAR (NAVIGASI) */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.bg-light { background-color: var(--warna-bg-light); }
+.bg-accent { background-color: var(--warna-bg-card); }
+.section-padding { padding: 80px 0; }
+
+img { max-width: 100%; height: auto; display: block; }
+.img-responsive { width: 100%; object-fit: cover; }
+.rounded { border-radius: 15px; }
+
+/* NAVBAR */
 .navbar {
-    background-color: var(--warna-utama);
-    padding: 1rem 2rem;
+    background: var(--warna-utama);
+    color: white;
+    padding: 15px 0;
     position: fixed;
-    top: 0;
     width: 100%;
+    top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow);
 }
 
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    color: white;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
-    letter-spacing: 1px;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
 }
 
 .nav-links a {
@@ -57,142 +78,106 @@ body {
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--warna-aksen);
+.nav-links a:hover { color: var(--warna-aksen); }
+
+.menu-toggle { display: none; cursor: pointer; background: none; border: none; }
+.bar { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; transition: 0.4s; }
+
+/* HERO */
+.hero-section {
+    padding: 150px 0 100px;
+    background: var(--warna-utama);
+    color: white;
 }
 
-/* 3. HALAMAN BERANDA (INDEX.HTML) */
-.hero-banner {
-    height: 450px;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://i.ibb.co.com/ZzC9mpJC/10.png'); /* Gambar Utama  */
-    background-size: cover;
-    background-position: center;
+.hero-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    margin-top: 60px;
+    gap: 40px;
 }
 
-.btn-belajar {
+.hero-text h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
+.hero-text p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+/* TOMBOL */
+.btn-primary, .btn-secondary {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 35px;
-    background: var(--warna-aksen);
-    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
     text-decoration: none;
-    border-radius: 50px;
     font-weight: bold;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-/* Kartu Profil Kelompok */
-.team-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 50px 20px;
-}
+.btn-primary { background: var(--warna-aksen); color: white; border: none; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 
-.member-card {
+.btn-secondary { background: white; color: var(--warna-utama); border: 2px solid var(--warna-utama); margin-left: 10px; }
+
+/* GRID & CARDS */
+.section-title { text-align: center; font-size: 2rem; margin-bottom: 10px; }
+.section-subtitle { text-align: center; color: var(--warna-teks-abu); margin-bottom: 50px; }
+
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+
+.card {
     background: white;
-    width: 250px;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
     box-shadow: var(--shadow);
     transition: 0.3s;
 }
 
-.member-card:hover {
-    transform: translateY(-10px);
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border-bottom: 4px solid var(--warna-aksen);
 }
 
-.photo-frame {
+.feature-card .icon { font-size: 3rem; margin-bottom: 15px; }
+
+/* TIM */
+.grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center; }
+.team-card img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     margin: 0 auto 15px;
-    overflow: hidden;
-    border: 4px solid var(--warna-aksen);
-}
-
-.photo-frame img {
-    width: 100%;
-    height: 100%;
+    border: 3px solid var(--warna-aksen);
     object-fit: cover;
 }
 
-/* 4. HALAMAN BELAJAR (LMS LAYOUT) */
-.lms-wrapper {
-    display: flex;
-    margin-top: 60px;
-    min-height: 100vh;
+/* FOOTER */
+.footer {
+    background: var(--warna-utama);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
 }
 
-.sidebar {
-    width: 280px;
-    background: white;
-    border-right: 1px solid #ddd;
-    padding: 20px;
-    position: sticky;
-    top: 60px;
-    height: calc(100vh - 60px);
-}
-
-.main-content {
-    flex: 1;
-    padding: 40px;
-}
-
-/* Kartu Materi (Grid) */
-.materi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
-}
-
-.img-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #eee;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.img-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Video & Iframe */
-.video-container {
-    position: relative;
-    padding-top: 56.25%; /* Ratio 16:9 */
-    margin: 20px 0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    border: none;
-}
-
-/* Tombol Aksi */
-.btn-primary { background: #f39c12; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
-.btn-secondary { background: #e74c3c; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
-
-/* 5. RESPONSIVE (HP) */
+/* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
-    .lms-wrapper { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: relative; top: 0; }
-    .hero-text h1 { font-size: 2rem; }
+    .nav-links {
+        display: none; /* Disembunyikan untuk mobile (diatur JS) */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--warna-utama);
+        padding: 20px;
+    }
+
+    .nav-links.active { display: flex; }
+    .nav-links a { margin: 10px 0; }
+    .menu-toggle { display: block; }
+
+    .hero-container, .grid-2 { flex-direction: column; text-align: center; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .btn-secondary { margin: 10px 0 0 0; }
 }
