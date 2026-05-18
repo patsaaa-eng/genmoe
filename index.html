@@ -6,113 +6,144 @@
     <title>Gen-Mu - Media Pembelajaran Fikih</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Mengatur variabel warna agar konsisten */
         :root {
-            --warna-utama: #2c3e50;
-            --warna-aksen: #27ae60;
+            --primary: #2c3e50;
+            --accent: #27ae60;
+            --bg-light: #f4f7f6;
         }
 
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg-light); }
 
-        /* Hero Section (Gambar Utama) */
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://i.ibb.co.com/ZzC9mpJC/10.png'); /* Menggunakan gambar penutup bab 4 sebagai hero */
+        /* TAMPILAN BERANDA UTAMA (HERO) */
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://i.ibb.co.com/ZzC9mpJC/10.png'); /* Link langsung gambar utama */
             background-size: cover;
             background-position: center;
-            height: 450px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            border-radius: 0 0 30px 30px;
         }
 
-        .hero-content h1 { font-size: 3rem; margin: 0; }
-        .hero-content p { font-size: 1.2rem; opacity: 0.9; }
+        .hero-text h1 { font-size: 3rem; margin: 0; }
+        .hero-text p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
 
-        /* Team Section */
-        .team-section { padding: 50px 20px; text-align: center; }
+        /* TAMPILAN PROFIL KELOMPOK */
+        .team-container {
+            padding: 50px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         .team-grid {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
-        .team-card {
+        .member-card {
             background: white;
-            padding: 25px;
+            width: 240px;
+            padding: 20px;
             border-radius: 15px;
-            width: 220px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        /* Profile Image Styling */
-        .profile-img {
-            width: 130px;
-            height: 130px;
+        .member-card:hover { transform: translateY(-10px); }
+
+        /* Styling Gambar Profil agar Bulat */
+        .photo-frame {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--warna-aksen);
-            margin-bottom: 15px;
-            background-color: #eee; /* Placeholder warna jika gambar belum ada */
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 4px solid var(--accent);
         }
 
-        .btn-start {
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-belajar {
             display: inline-block;
-            margin-top: 25px;
-            padding: 12px 35px;
-            background: var(--warna-aksen);
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: var(--accent);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 50px;
             font-weight: bold;
             transition: 0.3s;
         }
 
-        .btn-start:hover { transform: scale(1.05); background: #219150; }
+        .btn-belajar:hover { background: #219150; box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4); }
     </style>
 </head>
 <body>
 
-    <header class="hero-section">
-        <div class="hero-content">
-            <h1>Selamat Datang di Gen-Mu</h1>
-            <p>Media Pembelajaran Fikih Interaktif untuk MI</p>
-            <a href="belajar.html" class="btn-start">Mulai Belajar</a>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Gen-Mu</a>
+            <div class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="belajar.html">Materi</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-banner">
+        <div class="hero-text">
+            <h1>Gen-Mu</h1>
+            <p>Generasi Muhammadiyah: Cerdas, Kreatif, Berakhlak</p>
+            <a href="belajar.html" class="btn-belajar">Mulai Belajar Sekarang</a>
         </div>
     </header>
 
-    <section class="team-section">
-        <h2>Tim Pengembang Kelompok</h2>
+    <section class="team-container">
+        <h2>Tim Pengembang</h2>
         <div class="team-grid">
             
-            <div class="team-card">
-                <img src="https://i.ibb.co.com/mr6DtVqV/macam-macam-shalat-6.png" alt="Foto Anggota" class="profile-img">
-                <h3>Anggota 1</h3>
-                <p>NIM Anda</p>
+            <div class="member-card">
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co.com/mr6DtVqV/macam-macam-shalat-6.png" alt="Profil 1">
+                </div>
+                <h3>Nama Anggota 1</h3>
+                <p>NIM / Peran</p>
             </div>
 
-            <div class="team-card">
-                <img src="https://i.ibb.co.com/mr6DtVqV/macam-macam-shalat-6.png" alt="Foto Anggota" class="profile-img">
-                <h3>Anggota 2</h3>
-                <p>NIM Anda</p>
+            <div class="member-card">
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co.com/mr6DtVqV/macam-macam-shalat-6.png" alt="Profil 2">
+                </div>
+                <h3>Nama Anggota 2</h3>
+                <p>NIM / Peran</p>
             </div>
 
-            <div class="team-card">
-                <img src="https://i.ibb.co.com/mr6DtVqV/macam-macam-shalat-6.png" alt="Foto Anggota" class="profile-img">
-                <h3>Anggota 3</h3>
-                <p>NIM Anda</p>
+            <div class="member-card">
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co.com/mr6DtVqV/macam-macam-shalat-6.png" alt="Profil 3">
+                </div>
+                <h3>Nama Anggota 3</h3>
+                <p>NIM / Peran</p>
             </div>
 
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 30px; background: #2c3e50; color: white; margin-top: 50px;">
-        <p>&copy; 2026 Gen-Mu - Universitas di Yogyakarta</p>
-    </section>
+    <footer style="background: var(--primary); color: white; text-align: center; padding: 30px; margin-top: 50px;">
+        <p>&copy; 2026 Tim Gen-Mu Yogyakarta</p>
+    </footer>
 
 </body>
 </html>
