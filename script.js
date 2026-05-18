@@ -1,53 +1,53 @@
-// Navigasi Mobile (Hamburger Menu)
-const menuToggle = document.getElementById('mobile-menu');
-const navLinks = document.querySelector('.nav-links');
+// script.js
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Animasi tombol hamburger sederhana
-    menuToggle.classList.toggle('is-active');
-});
+/**
+ * Fungsi untuk berpindah tab/bab pada halaman belajar.html
+ * @param {string} tabId - ID dari section bab yang ingin ditampilkan
+ */
+function buka(tabId) {
+    // 1. Ambil semua elemen section konten dan tombol menu
+    const sections = document.querySelectorAll('.content-card, .content-section');
+    const buttons = document.querySelectorAll('.menu-btn');
 
-// Tutup menu saat link diklik (untuk mobile)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+    // 2. Sembunyikan semua section dengan menghapus kelas 'active'
+    sections.forEach(section => {
+        section.classList.remove('active');
     });
-});
 
-// Penanganan Gambar Gagal Dimuat
-document.querySelectorAll('img').forEach(img => {
-    img.onerror = function() {
-        this.style.display = 'none'; // Sembunyikan gambar asli
-        const fallback = document.createElement('div');
-        fallback.className = 'img-fallback';
-        fallback.innerHTML = '<span>Gambar belum ditambahkan</span>';
-        fallback.style.background = '#ddd';
-        fallback.style.height = '200px';
-        fallback.style.display = 'flex';
-        fallback.style.alignItems = 'center';
-        fallback.style.justifyContent = 'center';
-        fallback.style.borderRadius = '10px';
-        this.parentNode.insertBefore(fallback, this);
-    };
-});
-
-// Efek Muncul Saat Scroll (Scroll Reveal Sederhana)
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => {
-        const top = window.scrollY;
-        const offset = sec.offsetTop - 400;
-        if (top >= offset) {
-            sec.style.opacity = '1';
-            sec.style.transform = 'translateY(0)';
-        }
+    // 3. Nonaktifkan semua tombol menu dengan menghapus kelas 'active'
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
     });
-});
 
-// Atur gaya awal untuk animasi scroll
-document.querySelectorAll('section').forEach(sec => {
-    sec.style.opacity = '0';
-    sec.style.transform = 'translateY(20px)';
-    sec.style.transition = 'all 0.8s ease-out';
+    // 4. Tampilkan section yang dipilih berdasarkan ID
+    const targetSection = document.getElementById(tabId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+
+    // 5. Berikan kelas 'active' pada tombol yang baru saja diklik
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    // 6. Otomatis scroll ke posisi paling atas agar materi terbaca dari awal
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+/**
+ * Event Listener untuk menangani interaksi tambahan
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("LMS Gen-Mu siap digunakan!");
+    
+    // Opsional: Menambahkan efek suara klik atau log aktivitas sederhana
+    const allLinks = document.querySelectorAll('a.btn-lms');
+    allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            console.log("Membuka sumber luar: " + link.href);
+        });
+    });
 });
